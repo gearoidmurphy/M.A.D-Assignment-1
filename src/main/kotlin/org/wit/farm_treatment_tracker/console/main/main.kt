@@ -18,6 +18,7 @@ fun main(args: Array<String>) {
         when(input) {
             1 -> addTreatment()
             2 -> listAllTreatment()
+            3 -> searchAnimalsTreatments()
             -1 -> println("Exiting App")
             else -> println("Invalid Option")
         }
@@ -34,6 +35,7 @@ fun menu() : Int {
     println("Main Menu")
     println(" 1. Add Treatment")
     println(" 2. List All Treatments")
+    println(" 3. Search Animal Treatment History")
     println("-1. Exit")
     println()
     print("Enter an integer : ")
@@ -71,5 +73,34 @@ fun addTreatment() {
 fun listAllTreatment() {
     println("Listing All Treatments on your Farm")
     println()
-    treatments.forEach { logger.info("${it}") }
+    treatments.forEach { println("${it.id}: ${it.tagNumber}, ${it.treatment}, ${it.amount}ml, ${it.withdrawal} Days, ${it.date}") }
+}
+
+fun getId() : Long {
+    var strId : String? // String to hold user input
+    var searchId : Long // Long to hold converted id
+    print("Enter id to Search/Update : ")
+    strId = readLine()!!
+    searchId = if (strId.toLongOrNull() != null && !strId.isEmpty())
+        strId.toLong()
+    else
+        -9
+    return searchId
+}
+
+fun search(id: Long) : TreatmentModel? {
+    var foundAnimal: TreatmentModel? = treatments.find { p -> p.id == id }
+    return foundAnimal
+}
+
+fun searchAnimalsTreatments() {
+    listAllTreatment()
+    var searchId = getId()
+    val aTreatment = search(searchId)
+
+    if(aTreatment != null) {
+        println("Animal ${aTreatment.tagNumber} Treatment Details : ")
+        println("- On ${aTreatment.date} the following was given : ${aTreatment.treatment}, ${aTreatment.amount}ml, ${aTreatment.withdrawal} ")
+    }else
+        println("Tag Number Not Found...")
 }
