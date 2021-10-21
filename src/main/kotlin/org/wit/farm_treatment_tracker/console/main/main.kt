@@ -22,6 +22,7 @@ fun main(args: Array<String>) {
             2 -> listAllTreatment()
             3 -> searchAnimalsTreatments()
             4 -> deleteTreatment()
+            5 -> updateTreatment()
             -99 -> dummyData()
             -1 -> println("Exiting App")
             else -> println("Invalid Option")
@@ -41,6 +42,7 @@ fun menu() : Int {
     println(" 2. List All Treatments")
     println(" 3. Search Animal Treatment History")
     println(" 4. Delete Animal Treatment")
+    println(" 5. Update treatment")
     println("-1. Exit")
     println()
     print("Enter an integer : ")
@@ -118,6 +120,48 @@ fun deleteTreatment() {
     val aTreatment = search(deleteId)
     treatments.remove(aTreatment)
     println("Treatment has been removed!")
+}
+
+fun updateTreatment() {
+    println("Update Treatment")
+    println()
+    listAllTreatment()
+    var searchId = getId()
+    val aTreatment = search(searchId)
+    var tempTagNumber : Int?
+    var tempTreatment : String?
+    var tempAmount : Int?
+    var tempWithdrawal : Int?
+    var tempDate : String?
+
+    if(aTreatment != null) {
+        print("Enter New Tag Number Previously was [ " + aTreatment.tagNumber + " ] : ")
+        tempTagNumber = readLine()!!.toInt()
+        print("Enter a New Treatment Previously was [ " + aTreatment.treatment + " ] : ")
+        tempTreatment = readLine()!!
+        print("Enter New Amount Given Previously was [ " + aTreatment.amount + " ] : ")
+        tempAmount = readLine()!!.toInt()
+        print("Enter New Withdrawal Period Previously was [ " + aTreatment.withdrawal + " ] : ")
+        tempWithdrawal = readLine()!!.toInt()
+        print("Enter New Date Previously was [ " + aTreatment.date + " ] (dd-MM-yyyy): ")
+        tempDate = readLine()!!
+
+        if (!tempTreatment.isNullOrEmpty()) {
+            aTreatment.tagNumber = tempTagNumber
+            aTreatment.treatment = tempTreatment
+            aTreatment.amount = tempAmount
+            aTreatment.withdrawal = tempWithdrawal
+            aTreatment.date = tempDate
+            println(
+                "You updated the treatment to the following: " + aTreatment.tagNumber + ", " + aTreatment.treatment +
+                        ", " + aTreatment.amount + "ml, "+ aTreatment.withdrawal + " Days, " + aTreatment.date)
+            logger.info("Treatment Updated : [ $aTreatment ]")
+        }
+        else
+            logger.info("Treatment Not Updated")
+    }
+    else
+        println("Treatment Not Updated...")
 }
 
 fun dummyData() {
