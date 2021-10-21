@@ -1,5 +1,6 @@
 package org.wit.farm_treatment_tracker.console.views
 
+import org.wit.farm_treatment_tracker.console.models.TreatmentJSONStore
 import org.wit.farm_treatment_tracker.console.models.TreatmentMemStore
 import org.wit.farm_treatment_tracker.console.models.TreatmentModel
 import java.time.LocalDateTime
@@ -32,7 +33,7 @@ class TreatmentView {
         return option
     }
 
-    fun listTreatments(treatments : TreatmentMemStore) {
+    fun listTreatments(treatments : TreatmentJSONStore) {
         println("List All Treatments")
         println()
         treatments.printList()

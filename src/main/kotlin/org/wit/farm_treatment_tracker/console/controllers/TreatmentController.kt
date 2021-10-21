@@ -2,13 +2,15 @@ package org.wit.farm_treatment_tracker.console.controllers
 
 import mu.KotlinLogging
 import org.wit.farm_treatment_tracker.console.helpers.read
+import org.wit.farm_treatment_tracker.console.models.TreatmentJSONStore
 import org.wit.farm_treatment_tracker.console.models.TreatmentMemStore
 import org.wit.farm_treatment_tracker.console.models.TreatmentModel
 import org.wit.farm_treatment_tracker.console.views.TreatmentView
 
 class TreatmentController {
 
-    val treatments = TreatmentMemStore()
+//    val treatments = TreatmentMemStore()
+    val treatments = TreatmentJSONStore()
     val treatmentView = TreatmentView()
     val logger = KotlinLogging.logger {}
 

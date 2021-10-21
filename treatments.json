@@ -1,0 +1,26 @@
+[
+  {
+    "id": 7332263461714930640,
+    "tagNumber": 71461,
+    "treatment": "Tubes",
+    "amount": 100,
+    "withdrawal": 30,
+    "date": "01-09-2021"
+  },
+  {
+    "id": 2847057330881097649,
+    "tagNumber": 61501,
+    "treatment": "Bovevac",
+    "amount": 500,
+    "withdrawal": 20,
+    "date": "23-09-2021"
+  },
+  {
+    "id": -1874881653867337532,
+    "tagNumber": 42063,
+    "treatment": "aprilzol",
+    "amount": 25,
+    "withdrawal": 12,
+    "date": "19-08-2021"
+  }
+]
