@@ -2,13 +2,15 @@ package org.wit.farm_treatment_tracker.console.controllers
 
 import mu.KotlinLogging
 import org.wit.farm_treatment_tracker.console.helpers.read
+import org.wit.farm_treatment_tracker.console.models.TreatmentJSONStore
 import org.wit.farm_treatment_tracker.console.models.TreatmentMemStore
 import org.wit.farm_treatment_tracker.console.models.TreatmentModel
 import org.wit.farm_treatment_tracker.console.views.TreatmentView
 
 class TreatmentController {
 
-    val treatments = TreatmentMemStore()
+//    val treatments = TreatmentMemStore()
+    val treatments = TreatmentJSONStore()
     val treatmentView = TreatmentView()
     val logger = KotlinLogging.logger {}
 
@@ -28,7 +30,7 @@ class TreatmentController {
                 1 -> addTreatment()
                 2 -> list()
                 3 -> searchAnimalsTreatments()
-//            4 -> deleteTreatment()
+                4 -> delete()
                 5 -> updateTreatment()
                 -99 -> dummyData()
                 -1 -> println("Exiting App")
@@ -69,13 +71,20 @@ class TreatmentController {
         return foundTreatment
     }
 
-//fun deleteTreatment() {
-//    listAllTreatment()
-//    var deleteId = getId()
-//    val aTreatment = search(deleteId)
-//    treatments.delete(aTreatment.copy())
-//
-//}
+
+    fun delete() {
+        treatmentView.listTreatments(treatments)
+        var searchId = treatmentView.getId()
+        val aTreatment = search(searchId)
+
+        if(aTreatment != null) {
+            treatments.delete(aTreatment)
+            println("Treatment Deleted...")
+            treatmentView.listTreatments(treatments)
+        }
+        else
+            println("Treatment Not Deleted...")
+    }
 
     fun updateTreatment() {
         treatmentView.listTreatments(treatments)

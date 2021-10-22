@@ -31,10 +31,8 @@ class TreatmentMemStore : TreatmentStore {
         write("storage.txt",treatment.id.toString() + " " + treatment.tagNumber.toString() + " " + treatment.treatment + " " + treatment.amount.toString() + " " + treatment.withdrawal.toString() + " " + treatment.date )
     }
 
-    fun delete(treatment: TreatmentModel){
-        treatment.id = getId()
+    override fun delete(treatment: TreatmentModel) {
         treatments.remove(treatment)
-        println("Treatment has been removed!")
     }
 
     override fun update(treatment: TreatmentModel) {
