@@ -5,4 +5,5 @@ interface TreatmentStore {
     fun findOne(id: Long): TreatmentModel?
     fun create(treatment: TreatmentModel)
     fun update(treatment: TreatmentModel)
+    fun delete(treatment: TreatmentModel)
 }

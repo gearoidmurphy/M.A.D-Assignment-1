@@ -1,11 +1,11 @@
 [
   {
     "id": 7332263461714930640,
-    "tagNumber": 71461,
-    "treatment": "Tubes",
-    "amount": 100,
-    "withdrawal": 30,
-    "date": "01-09-2021"
+    "tagNumber": 12356,
+    "treatment": "Tube",
+    "amount": 30,
+    "withdrawal": 20,
+    "date": "24-10-2021"
   },
   {
     "id": 2847057330881097649,
@@ -22,5 +22,21 @@
     "amount": 25,
     "withdrawal": 12,
     "date": "19-08-2021"
+  },
+  {
+    "id": 3860959994682839987,
+    "tagNumber": 7190,
+    "treatment": "Hoof Blaster",
+    "amount": 140,
+    "withdrawal": 5,
+    "date": "22-10-2021"
+  },
+  {
+    "id": -1873771554379761732,
+    "tagNumber": 12356,
+    "treatment": "tubes",
+    "amount": 100,
+    "withdrawal": 12,
+    "date": "22-10-2021"
   }
 ]

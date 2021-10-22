@@ -32,8 +32,8 @@ fun read(fileName: String): String {
                 var line = bufferedReader.readLine()
                 done = (line == null);
                 if (line != null){
-                    val strs = line.split(" ").toTypedArray()
-                    treatments.create(TreatmentModel(strs[0].toLong(),strs[1].toInt(),strs[2],strs[3].toInt(),strs[4].toInt(),strs[5]))
+//                    val strs = line.split(" ").toTypedArray()
+//                    treatments.create(TreatmentModel(strs[0].toLong(),strs[1].toInt(),strs[2],strs[3].toInt(),strs[4].toInt(),strs[5]))
                     partialStr.append(line)
                 };
             }

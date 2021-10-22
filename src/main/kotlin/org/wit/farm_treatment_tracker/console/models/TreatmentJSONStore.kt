@@ -6,6 +6,7 @@ import com.google.gson.reflect.TypeToken
 import mu.KotlinLogging
 
 import org.wit.farm_treatment_tracker.console.helpers.*
+import tornadofx.observable
 import java.util.*
 
 private val logger = KotlinLogging.logger {}
@@ -37,6 +38,19 @@ class TreatmentJSONStore : TreatmentStore {
         return foundTreatment
     }
 
+    fun searchTagNumber(tagNumber: Int) : MutableList<TreatmentModel?> {
+        var foundTreatment: TreatmentModel? = treatments.find { p -> p.tagNumber == tagNumber }
+        var List = mutableListOf<TreatmentModel?>()
+        var x : Int = 0
+        treatments.forEach {if (treatments[x].tagNumber == tagNumber){
+            List.add(treatments[x])
+        }
+        x++
+        }
+
+        return List
+    }
+
     override fun create(treatment: TreatmentModel) {
         treatment.id = generateRandomId()
         treatments.add(treatment)
@@ -52,6 +66,11 @@ class TreatmentJSONStore : TreatmentStore {
             foundTreatment.withdrawal = treatment.withdrawal
             foundTreatment.date = treatment.date
         }
+        serialize()
+    }
+
+    override fun delete(treatment: TreatmentModel) {
+        treatments.remove(treatment)
         serialize()
     }
 
